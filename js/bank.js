@@ -1,44 +1,28 @@
-
 // deposit button click event 
 document.getElementById("deposit-button").addEventListener('click', function () {
 
     //update deposit 
     const newDepositAmount = getInputValue('deposit-input');
-
-    const currentDepositTotalText = document.getElementById('deposit-total');
-    const currentDepositTotal = parseFloat(currentDepositTotalText.innerText);
-
-    const newDepositTotal = currentDepositTotal + newDepositAmount;
-    currentDepositTotalText.innerText = newDepositTotal;
-
+    updateTotalAmount('deposit-total', newDepositAmount);
 
     //balance update
     const currentBalanceTotalText = document.getElementById('balance-total');
     const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
-
     const newBalanceTotal = currentBalanceTotal + newDepositAmount;
     currentBalanceTotalText.innerText = newBalanceTotal;
 
 })
 
 //withdraw button click event
-
 document.getElementById("withdraw-button").addEventListener('click', function () {
 
     //update withdraw
     const newWithdrawAmount = getInputValue('withdraw-input');
-
-    const currentWithdrawTotalText = document.getElementById('withdraw-total');
-    const currentWithdrawTotal = parseFloat(currentWithdrawTotalText.innerText);
-
-    const newWithdrawTotal = currentWithdrawTotal + newWithdrawAmount;
-    currentWithdrawTotalText.innerText = newWithdrawTotal;
-
+    updateTotalAmount('withdraw-total', newWithdrawAmount);
 
     //balance update
     const currentBalanceTotalText = document.getElementById('balance-total');
     const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
-
     const newBalanceTotal = currentBalanceTotal - newWithdrawAmount;
     currentBalanceTotalText.innerText = newBalanceTotal;
 
@@ -50,6 +34,14 @@ function getInputValue(inputId) {
     const inputField = document.getElementById(inputId);
     const newAmount = parseFloat(inputField.value);
     inputField.value = '';
-
     return newAmount;
+}
+
+//calculate total amount
+function updateTotalAmount(totalFieldId, newAmount) {
+
+    const currentTotalText = document.getElementById(totalFieldId);
+    const currentTotal = parseFloat(currentTotalText.innerText);
+    const newTotal = currentTotal + newAmount;
+    currentTotalText.innerText = newTotal;
 }
