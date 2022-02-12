@@ -1,25 +1,23 @@
 // deposit button click event 
 document.getElementById("deposit-button").addEventListener('click', function () {
-
     //update deposit 
     const newDepositAmount = getInputValue('deposit-input');
-    updateTotalAmount('deposit-total', newDepositAmount);
 
-    //balance update
-    updateBalance(newDepositAmount, 'deposit');
-
+    if (newDepositAmount >= 0) {
+        updateTotalAmount('deposit-total', newDepositAmount);
+        updateBalance(newDepositAmount, 'deposit');
+    }
 })
 
 //withdraw button click event
 document.getElementById("withdraw-button").addEventListener('click', function () {
-
     //update withdraw
     const newWithdrawAmount = getInputValue('withdraw-input');
-    updateTotalAmount('withdraw-total', newWithdrawAmount);
 
-    //balance update
-    updateBalance(newWithdrawAmount, 'withdraw');
-
+    if (newWithdrawAmount >= 0) {
+        updateTotalAmount('withdraw-total', newWithdrawAmount);
+        updateBalance(newWithdrawAmount, 'withdraw');
+    }
 })
 
 //fatch new deposit or withdraw amount
@@ -42,6 +40,7 @@ function updateTotalAmount(totalFieldId, newAmount) {
 
 //update balance after transection
 function updateBalance(amount, transectionType) {
+
     let newBalanceTotal = 0;
     const currentBalanceTotalText = document.getElementById('balance-total');
     const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
