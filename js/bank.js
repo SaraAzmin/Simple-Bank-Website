@@ -6,10 +6,7 @@ document.getElementById("deposit-button").addEventListener('click', function () 
     updateTotalAmount('deposit-total', newDepositAmount);
 
     //balance update
-    const currentBalanceTotalText = document.getElementById('balance-total');
-    const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
-    const newBalanceTotal = currentBalanceTotal + newDepositAmount;
-    currentBalanceTotalText.innerText = newBalanceTotal;
+    updateBalance(newDepositAmount, 'deposit');
 
 })
 
@@ -21,10 +18,7 @@ document.getElementById("withdraw-button").addEventListener('click', function ()
     updateTotalAmount('withdraw-total', newWithdrawAmount);
 
     //balance update
-    const currentBalanceTotalText = document.getElementById('balance-total');
-    const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
-    const newBalanceTotal = currentBalanceTotal - newWithdrawAmount;
-    currentBalanceTotalText.innerText = newBalanceTotal;
+    updateBalance(newWithdrawAmount, 'withdraw');
 
 })
 
@@ -44,4 +38,19 @@ function updateTotalAmount(totalFieldId, newAmount) {
     const currentTotal = parseFloat(currentTotalText.innerText);
     const newTotal = currentTotal + newAmount;
     currentTotalText.innerText = newTotal;
+}
+
+//update balance after transection
+function updateBalance(amount, transectionType) {
+    let newBalanceTotal = 0;
+    const currentBalanceTotalText = document.getElementById('balance-total');
+    const currentBalanceTotal = parseFloat(currentBalanceTotalText.innerText);
+
+    if (transectionType == 'deposit') {
+        newBalanceTotal = currentBalanceTotal + amount;
+    }
+    else if (transectionType == 'withdraw') {
+        newBalanceTotal = currentBalanceTotal - amount;
+    }
+    currentBalanceTotalText.innerText = newBalanceTotal;
 }
