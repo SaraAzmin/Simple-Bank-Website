@@ -7,9 +7,10 @@ document.getElementById("login-submit").addEventListener('click', function () {
     const passwordField = document.getElementById('user-password');
     const userPassword = passwordField.value;
 
-    if (userEmail == 'sara@gmail.com' && userPassword == 'sara') {
-        //console.log('valid');
-        window.location.href = 'banking.html';
-    }
+    // if (userEmail == 'sara@gmail.com' && userPassword == 'sara') {
+    //     window.location.href = 'banking.html';
+    // }
+
+    window.location.href = 'banking.html';
 
 })
